@@ -37,17 +37,17 @@ Um assistente de otimização para Windows que roda dentro do [Claude Code](http
 
 ```mermaid
 flowchart TD
-    A([Você pede: "faz um diagnóstico do meu PC"]) --> B[1. Diagnóstico completo<br/>somente leitura]
-    B --> C[2. Relatório + recomendações<br/>R01, R02, R03...]
-    C --> D{Você escolhe<br/>quais resolver}
-    D --> E[3. Prévia de cada item<br/>o que, onde, quanto, risco]
-    E --> F{Você aprova?}
-    F -- não --> D
-    F -- sim --> G[4. Execução<br/>com backup]
-    G --> H[5. Resultado real<br/>espaço antes e depois]
-    H --> I{Mais algum item?}
-    I -- sim --> D
-    I -- não --> J([Fechamento: novo check-up<br/>+ como desfazer])
+    A(["Você pede: faz um diagnóstico do meu PC"]) --> B["1 - Diagnóstico completo<br/>somente leitura"]
+    B --> C["2 - Relatório e recomendações<br/>R01, R02, R03..."]
+    C --> D{"Você escolhe<br/>quais resolver"}
+    D --> E["3 - Prévia de cada item<br/>o que, onde, quanto, risco"]
+    E --> F{"Você aprova?"}
+    F -- "não" --> D
+    F -- "sim" --> G["4 - Execução<br/>com backup"]
+    G --> H["5 - Resultado real<br/>espaço antes e depois"]
+    H --> I{"Mais algum item?"}
+    I -- "sim" --> D
+    I -- "não" --> J(["Fechamento: novo check-up<br/>e como desfazer"])
 ```
 
 ### As cinco etapas
@@ -81,12 +81,12 @@ Os detalhes de cada cenário estão em [`references/estrategia-armazenamento.md`
 
 ```mermaid
 flowchart LR
-    A[Analisar<br/>pasta] --> B[Planejar<br/>CSV origem→destino]
-    B --> C[Você revisa<br/>e aprova]
-    C --> D[Copiar +<br/>verificar SHA-256]
+    A["Analisar<br/>pasta"] --> B["Planejar<br/>CSV origem para destino"]
+    B --> C["Você revisa<br/>e aprova"]
+    C --> D["Copiar e<br/>verificar SHA-256"]
     D --> E{"Deseja apagar o arquivo<br/>original antigo ou mantê-lo?"}
-    E -- apagar --> F[Originais verificados<br/>vão para a Lixeira]
-    E -- manter --> G([Fim])
+    E -- "apagar" --> F["Originais verificados<br/>vão para a Lixeira"]
+    E -- "manter" --> G(["Fim"])
     F --> G
 ```
 
