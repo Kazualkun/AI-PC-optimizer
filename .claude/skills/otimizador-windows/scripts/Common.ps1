@@ -389,7 +389,8 @@ function Get-ValorRegistro {
     param([string]$Chave, [string]$Nome)
     try {
         $k = Get-Item -LiteralPath $Chave -ErrorAction Stop
-        return $k.GetValue($Nome, $null, 'DoNotExpandEnvironmentNames')
+        # A vírgula impede o PowerShell de desenrolar valores binários (byte[]) em Object[].
+        return , $k.GetValue($Nome, $null, 'DoNotExpandEnvironmentNames')
     } catch { return $null }
 }
 
